@@ -1,0 +1,41 @@
+header {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+header .content{
+    height: 56px;
+    background-color: #4F4F4F;
+    display: flex;
+    flex-direction: row;
+
+    box-shadow: 0 0 5px 0 black;
+
+}
+
+header .content ul{
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+
+    color: #F2F2F2;
+    letter-spacing: 0.033em;
+
+    margin: 0 auto;
+}
+
+header .content ul li{
+    /* border-bottom: 2px solid #F2F2F2; */
+    cursor: pointer;
+}
+
+header .content ul li:hover{
+    font-weight: 500;
+    /* letter-spacing: 0.09em; */
+    
+}
