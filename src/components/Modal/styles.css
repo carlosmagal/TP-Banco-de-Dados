@@ -1,0 +1,14 @@
+.atende-data{
+    word-wrap: break-word;
+    min-width: 280px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.modal-button{
+    cursor: pointer;
+    color: #416B84;
+    font-weight: 800;
+    width: fit-content;
+    margin: 8px;
+}

@@ -4,4 +4,32 @@
     width: 300px;
 
     padding: 12px;
+    padding-left: 20px;
+
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 16px;
+}
+
+#atendente-card .left-content{
+    display: flex;
+    align-items: center; 
+}
+
+#atendente-card .card-props{
+    display: block;
+    word-wrap: break-word;
+}
+
+#atendente-card .card-props strong{
+    margin-bottom: 14px;
+    text-transform: lowercase;
+}
+
+#atendente-card .card-props p:last-child{
+    margin-top: 16px;
+    cursor: pointer;
+    color: #416B84;
+    font-weight: 800;
+    width: fit-content;
 }

@@ -30,7 +30,6 @@ header .content ul{
 }
 
 header .content ul li{
-    /* border-bottom: 2px solid #F2F2F2; */
     cursor: pointer;
 }
 
@@ -38,4 +37,21 @@ header .content ul li:hover{
     font-weight: 500;
     /* letter-spacing: 0.09em; */
     
+}
+
+.border-header{
+    border-bottom: 2px solid #F2F2F2;
+
+}
+
+@media screen and (max-width: 540px){
+
+    header .content #logo{
+        display: none;
+    }
+    
+    header .content ul{
+        width: 300px;
+        font-size: 15px;
+    }
 }

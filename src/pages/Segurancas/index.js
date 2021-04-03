@@ -8,7 +8,7 @@ import Card from '../../components/Cards/Atendente/index'
 import { dateMask, phoneMask, cpfMask, RGmask } from '../../utils/masks'
 import './styles.css'
 
-const Atendentes = (props) =>{
+const Segurancas = (props) =>{
 
     const[name, setName] = useState('')
     const[RG, setRG] = useState('')
@@ -19,10 +19,7 @@ const Atendentes = (props) =>{
     const[phone, setPhone] = useState('')
     const[salary, setSalary] = useState('')
     const[dateAd, setDataAd] = useState('')
-
-    const handleRegister = () =>{
-        console.log('opa');
-    }
+    
 
     return (
         <div id='container-atendentes'>
@@ -135,14 +132,13 @@ const Atendentes = (props) =>{
                             setDataAd(dateMask(e.target.value))
                         }
                     />
-                </div>
+                </div><br/>
+                
+                <h3>Escala</h3>
                 
                 
                 <div className='button-container'>
-                    <button 
-                        type='submit' 
-                        onClick={handleRegister}
-                    >
+                    <button>
                         Cadastrar
                     </button>
                 </div>
@@ -176,4 +172,4 @@ const Atendentes = (props) =>{
 
 }
 
-export default Atendentes
+export default Segurancas

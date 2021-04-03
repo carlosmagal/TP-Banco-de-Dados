@@ -16,6 +16,7 @@ aside{
     padding: 16px;
     padding-top: 24px;
     margin-right: 24px;
+    background: #FEFEFE;
 }
 
 aside .titulo{
@@ -48,6 +49,7 @@ aside .button-container button{
     width: 70%;
     height: 40px;
     margin-top: 30px;
+    margin-bottom: 16px;
     
     font-weight: 700;
     font-size: 18px;
@@ -55,12 +57,27 @@ aside .button-container button{
     text-transform: uppercase;
 }
 
+aside .button-container button:hover{
+    background-color: #6BC8FF;
+}
+
+/* main{
+    display: flex;
+    flex-direction: column;
+} */
 main .cards-container{
-    /* flex: 1; */
+    flex: 1;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+}
+
+main .pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 48px;
 }
 
 
@@ -86,5 +103,15 @@ main .cards-container{
 
     #atendente-card{
         width: 400px;
+    }
+}
+
+@media screen and (max-width: 540px){
+    aside{
+        width: 300px;
+    }
+
+    #atendente-card{
+        width: 300px;
     }
 }
