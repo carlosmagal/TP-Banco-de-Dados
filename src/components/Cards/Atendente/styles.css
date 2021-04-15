@@ -33,3 +33,13 @@
     font-weight: 800;
     width: fit-content;
 }
+
+#atendente-card .card-props #dots{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+
+#atendente-card .card-props svg{
+    cursor: pointer;
+}

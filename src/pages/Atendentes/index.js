@@ -1,27 +1,78 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
-import Pagination from '@material-ui/lab/Pagination'
+// import Pagination from '@material-ui/lab/Pagination'
 
 import Card from '../../components/Cards/Atendente/index'
-import { dateMask, phoneMask, cpfMask, RGmask } from '../../utils/masks'
+import { dateMask, phoneMask, RGmask } from '../../utils/masks'
+import api from '../../services/api'
 import './styles.css'
 
 const Atendentes = (props) =>{
 
-    const[name, setName] = useState('')
-    const[RG, setRG] = useState('')
+    const[name, setName] = useState('adfa')
+    const[RG, setRG] = useState('5234245')
     const[CPF, setCFP] = useState('')
-    const[date, setData] = useState('')
-    const[sex, setSex] = useState('')
-    const[address, setAddress] = useState('')
-    const[phone, setPhone] = useState('')
-    const[salary, setSalary] = useState('')
-    const[dateAd, setDataAd] = useState('')
+    const[date, setData] = useState('2020-01-02')
+    const[sex, setSex] = useState('H')
+    const[address, setAddress] = useState('2352345')
+    const[phone, setPhone] = useState('52345')
+    const[salary, setSalary] = useState('52345')
+    const[dateAd, setDataAd] = useState('2020-02-11')
 
-    const handleRegister = () =>{
-        console.log('opa');
+    const[data, setData1] = useState([])
+
+    useEffect(()=>{
+        loadItens()
+    },[])
+
+    const handleRegister = async() =>{
+        await api.post('/pessoa',{
+            rg:RG, 
+            cpf:CPF, 
+            nome:name, 
+            sexo:sex, 
+            endereco:address, 
+            data_de_nascimento:date 
+        }).then(response=>{
+            console.log(response)
+        }).catch(error=>{
+            console.log(error);
+        })
+
+        let code
+
+        await api.post('/funcionario',{
+            cpf: CPF,
+            agencia:41241,
+            salario:salary,
+            data_de_admissao:dateAd,
+        }).then(response=>{
+            console.log(response)
+
+            code  = response.data[0].codigo_funcionario
+            console.log(code);
+        })
+
+        await api.post('/funcionario/atendente',{
+            codigo: code,
+        }).then(response=>{
+            console.log('response')
+            loadItens()
+        })
+
+
+    }
+
+    const loadItens = async() =>{
+        await api.get('/funcionario/atendente')
+        .then(response=>{
+            setData1(response.data)
+            console.log(response);
+        }).catch(error=>{
+
+        })
     }
 
     return (
@@ -48,7 +99,7 @@ const Atendentes = (props) =>{
                         className='form-input'
                         value={CPF}
                         onChange={e=>
-                            setCFP(cpfMask(e.target.value))
+                            setCFP(e.target.value)
                         }
                     />
                     <TextField 
@@ -84,7 +135,7 @@ const Atendentes = (props) =>{
                     }
                     >
                         {
-                            ['Masculino', 'Feminino'].map((option) => (
+                            ['H', 'M'].map((option) => (
                                 <MenuItem key={option} value={option}>
                                     {option}
                                 </MenuItem>
@@ -150,12 +201,13 @@ const Atendentes = (props) =>{
             </aside>
             <main>
                 <div className="cards-container">
-                    <Card/><Card/><Card/><Card/><Card/>
-                    <Card/><Card/><Card/><Card/><Card/>
-                    <Card/><Card/><Card/><Card/><Card/>
-                    <Card/><Card/><Card/><Card/><Card/>
+                    {
+                        data.map(item=>
+                            <Card key={item.codigo_funcionario} data={item} a/>
+                        )
+                    }
                 </div>
-                <div className='pagination'>
+                {/* <div className='pagination'>
                     <Pagination 
                         count={10}
                         page={1}
@@ -169,7 +221,7 @@ const Atendentes = (props) =>{
                         color='primary'
                         // disabled={disablePagination}
                     />
-                </div>
+                </div> */}
             </main>
         </div>
     )

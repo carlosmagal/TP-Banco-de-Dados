@@ -132,9 +132,9 @@ const Segurancas = (props) =>{
                             setDataAd(dateMask(e.target.value))
                         }
                     />
-                </div><br/>
+                </div>
                 
-                <h3>Escala</h3>
+                {/* <h3>Escala</h3> */}
                 
                 
                 <div className='button-container'>
